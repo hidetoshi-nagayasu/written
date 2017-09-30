@@ -1,0 +1,27 @@
+.row.container.center-block
+  .form-section.col.s12.m6.offset-m3
+    = form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f|
+      = devise_error_messages!
+      %h3.form-title.center-align Writtenに登録する
+      .field.input-field
+        %label{"data-error" => "wrong", "data-success" => "right", :for => "user_name"} User name
+        = f.text_field :user_name, maxlength: "20"
+      .field.input-field
+        %label{"data-error" => "wrong", "data-success" => "right", :for => "email"} Email
+        = f.email_field :email
+      .field.input-field
+        %label{"data-error" => "wrong", "data-success" => "right", :for => "password"} Password
+        = f.password_field :password, autocomplete: "off"
+      .field.input-field
+        %label{"data-error" => "wrong", "data-success" => "right", :for => "password"} Password again
+        = f.password_field :password_confirmation, autocomplete: "off"
+      .file-field.input-field
+        .btn
+          %span File
+          = f.file_field :avatar
+        .file-path-wrapper
+          %input.file-path.validate{:placeholder => "Upload your icon image", :type => "text"}/
+      .field
+        = f.submit "登録する", class: 'waves-effect waves-light btn-large'
+    .field
+      = render "devise/shared/links"

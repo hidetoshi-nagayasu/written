@@ -1,0 +1,13 @@
+.row.container.center-block
+  .form-section.col.s12.m6.offset-m3
+    = form_for(resource, as: resource_name, url: password_path(resource_name), html: { method: :post }) do |f|
+      = devise_error_messages!
+      %h3.form-title.center-align
+        パスワード再設定
+        .field.input-field
+          %label{"data-error" => "wrong", "data-success" => "right", :for => "email"} Email
+          = f.email_field :email
+        .field
+          = f.submit "パスワードをリセットする", class: 'waves-effect waves-light btn'
+    .field
+      = render "devise/shared/links"

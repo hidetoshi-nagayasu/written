@@ -1,0 +1,20 @@
+.row.container
+  - @articles.each do |article|
+    .col.s12.m6
+      .card
+        .card-image
+          - if article.thumbnail?
+            %a{:href => "/articles/#{article.id}"}= image_tag article.thumbnail(:medium), alt: '', class: 'image-hover'
+          - else
+            %a{:href => "/articles/#{article.id}"}= image_tag 'noimage.png', class: 'image-hover'
+        .card-content
+          - if article.user.avatar?
+            = image_tag article.user.avatar , alt: '', class: 'avatar'
+          - else
+            = image_tag("icon.png", :class => "avatar")
+          = link_to article.user.user_name, "/users/#{article.user_id}", class: "grey-text text-lighten-1 author-hover"
+          %a.card-title.teal-text.text-lighten-2.title-hover{:href => "/articles/#{article.id}"}= article.title.truncate(50)
+          = sanitize article.text.truncate(70)
+        .card-action
+          %a{:href => ""}
+            %i.material-icons star_border

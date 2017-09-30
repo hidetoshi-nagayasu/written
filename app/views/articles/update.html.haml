@@ -1,0 +1,8 @@
+.row
+  .success.col.s12.m8.offset-m2
+    %h3.center-align.field
+      - if @draft
+        下書きに戻しました。
+      - else
+        投稿を更新しました。
+    %a.center-align.field{:href => "/articles"} 投稿一覧へ戻る

@@ -1,0 +1,28 @@
+.row
+  .col.s12.m6.offset-m3
+    - if @article.thumbnail
+      .eye-catch.center
+        = image_tag @article.thumbnail(:medium), alt: ''
+
+    %h2.article-title
+      = @article.title
+    .article-info
+      %p.right= @article.created_at.strftime("%Y/%m/%d")
+      = link_to @article.user.user_name, "/users/#{@article.user_id}", class: "right author grey-text text-darken-4 author-hover"
+    .text-section.article-text
+      != @article.text
+    .input-field.col.s12.comments
+      %h4.comment-head コメント一覧
+      - if @comments
+        - @comments.each do |comment|
+          %p
+            %strong
+              = link_to comment.user.user_name, "/users/#{comment.user_id}"
+              ：
+            = comment.text
+      - if current_user
+        = form_tag("/articles/#{@article.id}/comments", method: :post) do
+          .col.s12
+            %textarea#textarea1.materialize-textarea.comment-textarea{:name => "text", :placeholder => "Post a comment"}
+          .center
+            %input.waves-effect.waves-light.btn{:type => "submit", :value => "コメントを投稿"}/

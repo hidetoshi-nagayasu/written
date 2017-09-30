@@ -1,0 +1,17 @@
+.row.container
+  .form-section.col.s12.m8.offset-m2
+    = form_for :article, url: {action: "create"}, html: {class: "post"}, method: :post do |f|
+      %h3.form-title.center-align
+        投稿する
+      .field.file_field.input-field
+        = f.file_field :thumbnail, class: "image-file"
+        %btn.btn-floating.btn-large.waves-effect.waves-light.left.image-up
+          %i.material-icons image
+      .preview
+      .field.input-field
+        = f.text_field :title, name: 'title', placeholder: "タイトル", class: "editor-title"
+      .field.input-field
+        = f.text_area :text, name: "text",id: "textarea1", cols: "30", class: "editor-text materialize-textarea", contenteditable: "true"
+      .field
+        = f.submit "公開", class: 'waves-effect waves-light btn-large'
+        = f.submit "下書きに保存", name: "draft", class: 'white grey-text text-darken-3 waves-effect btn-large'

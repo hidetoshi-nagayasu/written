@@ -1,0 +1,22 @@
+.row.container
+  %h3.center-align.field
+    = @user_name
+    さんの下書き一覧
+  - @articles.each do |article|
+    .col.s12.m6
+      .card
+        .card-image
+          - if article.thumbnail?
+            %a{:href => "/articles/#{article.id}"}= image_tag article.thumbnail, alt: '', class: 'image-hover'
+          - else
+            %a{:href => "/articles/#{article.id}"}= image_tag 'noimage.png', class: 'image-hover'
+        .card-content
+          %a.teal-text.text-lighten-2.title-hover{:href => "/articles/#{article.id}"}= article.title.truncate(50)
+          = sanitize simple_format(article.text.truncate(70))
+        .card-action.center-align
+          %a.btn-flat.tooltipped.shrink{"data-delay" => "50", "data-position" => "top", "data-tooltip" => "Like!"}
+            %i.material-icons star_border
+          = link_to "/articles/#{article.id}/edit", data: {position: "top", delay: "50", tooltip: "Edit"}, method: :get, class: 'btn-flat tooltipped shrink' do
+            %i.material-icons edit
+          = link_to "/articles/#{article.id}", data: {confirm: "本当に削除してよろしいですか？", position: "top", delay: "50", tooltip: "Delete"}, method: :delete, class: 'btn-flat tooltipped shrink' do
+            %i.material-icons delete

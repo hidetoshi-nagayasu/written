@@ -1,0 +1,246 @@
+
+@import url('https://fonts.googleapis.com/css?family=Lato:100');
+$hov-coler: #aaa;
+
+@font-face
+{
+font-family: 'M+ Type-1 (general-j) Thin';
+src: url('mplus-1-thin-sub.eot');
+src: url('mplus-1-thin-sub.eot?#iefix') format('embedded-opentype'),
+url('mplus-1-thin-sub.woff') format('woff'),
+url('mplus-1-thin-sub.ttf') format('truetype');
+}
+
+body {
+  font-family:
+    // 'M+ C Type-1 (basic latin) Thin',
+    // 'M+ Type-1 (general-j) Thin', sans-serif;
+    'Avenir', 'Arial', 'Osaka', 'MS Pゴシック', sans-serif;
+}
+
+// Typography
+h1 {
+  font-size: 36px;
+}
+
+h2 {
+  font-size: 32px;
+}
+
+h3 {
+  font-size: 24px;
+}
+
+h4 {
+  font-size: 18px;
+}
+
+// ↓↓ header ↓↓
+#logo {
+  font-size: 40px;
+  margin: 0 36px;
+  font-family: 'Lato', sans-serif;
+  line-height: 60px;
+}
+
+#nav-mobile {
+  line-height: 64px;
+}
+
+.avatar {
+  width: 30px;
+  height: 30px;
+  vertical-align: middle;
+  margin-right: 8px;
+  border-radius: 50%;
+}
+
+.nav-right {
+  margin-right: 36px;
+}
+
+#search {
+  cursor: pointer;
+  transition: all 0.2;
+}
+
+#search:hover {
+  opacity: 0.8;
+}
+
+.search-form {
+  display: none;
+}
+
+.search-icon {
+  cursor: pointer;
+  vertical-align: middle;
+  transition: all 0.3s;
+}
+
+.search-icon:hover {
+  opacity: 0.6;
+}
+
+// ↓↓ main ↓↓
+
+.card-title {
+  font-size: large !important;
+  line-height: 150% !important;
+}
+
+.card-content p {
+  font-size: small;
+  letter-spacing: 0.4px;
+  line-height: 140%;
+}
+
+.continue {
+  margin-top: 18px !important;
+  font-size: small;
+}
+
+.continue-icon {
+  vertical-align: middle;
+  font-size: small;
+}
+
+.image-hover {
+  transition: all 0.2s;
+}
+
+.image-hover:hover {
+  opacity: 0.8;
+}
+
+.title-hover {
+  transition: all 0.2s;
+}
+
+.title-hover:hover {
+  color: #009688 !important;
+}
+
+.article-title {
+  margin: 50px 0 40px;
+  letter-spacing: 1.6px;
+}
+
+.article-text {
+  line-height: 180%;
+  letter-spacing: 1.4px;
+  white-space: pre-wrap;
+}
+
+.text-section {
+  display: block;
+}
+
+// 記事詳細ページ
+
+.eye-catch {
+  margin-top: 40px;
+}
+
+// 記事編集ページ
+.edit-eye-catch {
+  // position: relative;
+}
+
+.cancel {
+  position: absolute;
+  right: 10px;
+  top: 10px;
+}
+
+.cancel:hover {
+  opacity: 0.6;
+  cursor: pointer;
+}
+
+.author {
+  margin-right: 20px;
+}
+
+.author-hover:hover {
+  text-decoration: underline;
+}
+
+// form
+
+.form-section,
+.success
+{
+  text-align: center;
+  margin-top: 50px;
+}
+
+.field {
+  margin: 20px 0;
+}
+
+.field .render {
+  line-height: 180%;
+  font-size: small;
+}
+
+.image-file {
+  display: none;
+}
+
+// Editor
+.editor-title {
+  font-size: 28px !important;
+  border-bottom: none !important;
+}
+
+.editor-text {
+  min-height: 200px !important;
+  border-bottom: none !important;
+}
+
+// Comments
+.comments {
+  margin-top: 30px;
+  padding: 30px !important;
+  background-color: #f7f7f7 !important;
+}
+
+.comment-textarea {
+  margin-top: 20px !important;
+  height: 18px !important;
+}
+
+// 公開・下書きボタン
+.waves-input-wrapper {
+  margin: 0 10px;
+}
+
+// 削除ボタン
+.alert-title {
+  margin: 30px 0 30px;
+}
+
+.alert-text {
+
+}
+
+// Parts
+.shrink {
+  margin-right: 5px !important;
+}
+
+
+
+// ↓↓ footer ↓↓
+
+footer {
+  width: 100%;
+  height: 50px;
+  text-align: center;
+  border-top: 1px solid #f0f0f0;
+}
+
+#copyright {
+  line-height: 50px;
+}

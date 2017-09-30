@@ -1,0 +1,19 @@
+.row.container
+  - if @articles.present?
+    - @articles.each do |article|
+      .col.s12.m6
+        .card
+          .card-image
+            - if article.thumbnail?
+              %a{:href => "/articles/#{article.id}"}= image_tag article.thumbnail(:medium), alt: '', class: 'image-hover'
+            - else
+              %a{:href => "/articles/#{article.id}"}= image_tag 'noimage.png', class: 'image-hover'
+          .card-content
+            %a.card-title.teal-text.text-lighten-2.title-hover{:href => "/articles/#{article.id}"}= article.title.truncate(50)
+            = sanitize article.text.truncate(70)
+          .card-action
+            %a{:href => ""}
+              %i.material-icons star_border
+  - else
+    .success.col.s12.m8.offset-m2
+      %h3.center-align.field 検索に一致する記事はありません。

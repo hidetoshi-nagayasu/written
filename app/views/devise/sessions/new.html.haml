@@ -1,0 +1,18 @@
+.row.container.center-block
+  .form-section.col.s12.m6.offset-m3
+    = form_for(resource, as: resource_name, url: session_path(resource_name)) do |f|
+      %h3.form-title.center-align ログイン
+      .field.input-field
+        %label{"data-error" => "wrong", "data-success" => "right", :for => "email"} Email
+        = f.email_field :email
+      .field.input-field
+        %label{"data-error" => "wrong", "data-success" => "right", :for => "password"} Password
+        = f.password_field :password, autocomplete: "off"
+      - if devise_mapping.rememberable?
+        .field
+          %input#filled-in-box.filled-in{:type => "checkbox"}/
+          = f.label :パスワードを記憶, for: 'filled-in-box'
+      .field
+        = f.submit "ログイン", class: 'waves-effect waves-light btn-large'
+    .field
+      = render "devise/shared/links"

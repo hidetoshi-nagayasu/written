@@ -1,0 +1,56 @@
+!!!
+%html
+  %head
+    %meta{:content => "text/html; charset=UTF-8", "http-equiv" => "Content-Type"}/
+    %title Written
+    = stylesheet_link_tag 'http://mplus-fonts.sourceforge.jp/webfonts/basic_latin/mplus_webfonts.css'
+    = stylesheet_link_tag 'http://mplus-fonts.sourceforge.jp/webfonts/general-j/mplus_webfonts.css'
+    = stylesheet_link_tag 'https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.1/css/materialize.min.css'
+    = stylesheet_link_tag 'https://fonts.googleapis.com/icon?family=Material+Icons'
+    = stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true
+    = javascript_include_tag 'application', 'data-turbolinks-track' => true
+    = csrf_meta_tags
+  %body
+    %nav
+      .nav-wrapper.white
+        %a.brand-logo{:href => "/"}
+          %h1#logo.grey-text.text-darken-3 Written
+        %ul#nav-mobile.right.hide-on-med-and-down
+          %li.nav-right
+            %i#search.material-icons.grey-text.text-darken-3 search
+            = form_tag "/articles/search", method: 'get' do
+              = text_field_tag 'keyword', nil, {placeholder: 'Title search...', class: 'search-form grey-text text-darken-3'}
+              = submit_tag 'search', {style: 'display: none'}
+          - if user_signed_in?
+            / Dropdown Contents
+            %ul#dropdown1.dropdown-content{"data-beloworigin" => "true"}
+              %li
+                %a{:href => "/users/#{current_user.id}"} マイページ
+              %li
+                %a{:href => "/users/#{current_user.id}/drafts"} 下書き
+              %li
+                %a{:href => "/users/edit"} アカウント設定
+              %li.divider
+              %li= link_to "ログアウト", destroy_user_session_path, method: :delete
+            / /Dropdown Contents
+            %li
+              %a.dropdown-button{"data-activates" => "dropdown1", :href => ""}
+                - if current_user.avatar?
+                  = image_tag current_user.avatar, class: 'avatar'
+                - else
+                  = image_tag("icon.png", :class => "avatar")
+                %span.grey-text.text-darken-3= current_user.user_name
+                %i.material-icons.right.grey-text.text-darken-3 arrow_drop_down
+            %li.nav-right
+              %a.btn.btn-info{:href => "/articles/new"} 投稿する
+          - else
+            %li= link_to "ログイン", new_user_session_path, class: 'teal-text text-lighten-2'
+            %li.nav-right= link_to "新規登録", new_user_registration_path, class: 'teal-text text-lighten-2'
+          
+    = yield
+    %footer
+      %small#copyright
+        %i.fa.fa-copyright{"aria-hidden" => "true"}
+        2017 Written.
+    = javascript_include_tag 'https://code.jquery.com/jquery-3.2.1.min.js'
+    = javascript_include_tag 'https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.1/js/materialize.min.js'
